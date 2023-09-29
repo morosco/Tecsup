@@ -25,11 +25,19 @@ public class ProductoController {
 
 	private static final Logger Logger = LoggerFactory.getLogger(ProductoController.class); 
 	
+	@Value("${product.property}")
+	private String productProperty;
+	
 	@Value("${app.storage.path}")
 	private String STORAGEPATH;
 	
 	@Autowired
 	private ProductoService productoService;
+	
+	@GetMapping("/productos/test/property")
+	public String getProductProperty() {
+		return this.productProperty;
+	}
 	
 	@GetMapping("/productos")
 	public List<Producto> productos() {
